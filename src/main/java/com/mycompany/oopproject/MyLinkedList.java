@@ -69,7 +69,6 @@ class MyLinkedList<T extends Human>  {
     private T popFirst(){
         T element = first.getInstance();
         first = first.next;
-
         return element;
     }
 
@@ -85,7 +84,7 @@ class MyLinkedList<T extends Human>  {
             try{
                 humanMyLinkedList.add(HumanQueue.getHuman());
             } catch (TooShortMustachesException | LackOfBroochesException e){
-                System.out.println(e.getMessage() + " in " + i);
+                System.out.println(e.getMessage());
             }
         }
 
@@ -94,7 +93,7 @@ class MyLinkedList<T extends Human>  {
                 String gender = "Crock "+ HumanEnum.getRandomHuman();
                 humanMyLinkedList.add(new Crock(i, 0, gender, Crock.MIN_RESPECT));
             } catch (TooShortMustachesException | LackOfBroochesException e){
-                System.out.println(e.getMessage() + " in " + i);
+                System.out.println(e.getMessage());
             }
         }
 

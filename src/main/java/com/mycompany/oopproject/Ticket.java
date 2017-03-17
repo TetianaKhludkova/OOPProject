@@ -7,7 +7,7 @@ import java.util.Random;
 @Data
 class Ticket {
 
-    private int numberOfTicket = 0;
+    private int numberOfTicket;
     private static int number = 0;
     private int numberOfPlace;
     private int numberOfRow;
@@ -20,17 +20,12 @@ class Ticket {
         this.setNumberOfTicket(++number);
         this.setNumberOfPlace(random.nextInt(COUNT_OF_PLACES)+1);
         this.setNumberOfRow(random.nextInt(COUNT_OF_ROWS)+1);
-        this.isWin = false;
+        this.setWin(false);
     }
 
-    public boolean getIsWin() {
+    boolean getIsWin() {
         return isWin;
     }
-
-    public void setIsWin(boolean win) {
-        isWin = win;
-    }
-
 
     @Override
     public String toString() {

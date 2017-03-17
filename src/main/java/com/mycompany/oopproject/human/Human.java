@@ -13,22 +13,15 @@ import java.util.stream.Collectors;
 @Setter
 public class Human implements Comparator<Human>, Comparable<Human> {
 
-    private int id;
+    private int id, respect;
     private int amountOfTickets;
     static final int MAX_AMOUNT_OF_Tickets = 5;
 
-    public int getRespect() {
-        return 0;
-    }
 
     LinkedList<Human> sortByRespect() {
         if (Main.listeners.size() > 1) {
-            List<Human> ladies = Main.listeners.stream().filter(listeners->listeners.getClass().equals(Lady.class))
-                    .sorted(Human::compareTo)
-                    .collect(Collectors.toList());
-            List<Human> men = Main.listeners.stream().filter(listeners->listeners.getClass().equals(Man.class))
-                    .sorted(Human::compareTo)
-                    .collect(Collectors.toList());
+            List<Human> ladies = getHumansSorted(Lady.class);
+            List<Human> men = getHumansSorted(Man.class);
 
             Main.listeners.removeAll(Main.listeners);
             Main.listeners.addAll(ladies);
@@ -36,6 +29,12 @@ public class Human implements Comparator<Human>, Comparable<Human> {
             return Main.listeners;
         }
         return null;
+    }
+
+    private List<Human> getHumansSorted(Class clazz) {
+        return Main.listeners.stream().filter(listeners->listeners.getClass().equals(clazz))
+                        .sorted(Human::compareTo)
+                        .collect(Collectors.toList());
     }
 
     @Override

@@ -9,8 +9,7 @@ public class HumanQueue<T extends Human> implements HumanObserver{
     private Observers<HumanQueue> observers = null;
 
     public static Human getHuman(){
-        HumanEnum randomHuman;
-        randomHuman = HumanEnum.getRandomHuman();
+        HumanEnum randomHuman = HumanEnum.getRandomHuman();
         assert randomHuman != null;
         switch (randomHuman) {
             case MAN:
